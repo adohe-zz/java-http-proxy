@@ -11,4 +11,15 @@ public interface Pool<T> {
 
     T makeObject();
 
+    void activateObject(T obj);
+
+    void passivateObject(T obj);
+
+    void destroyObject(T obj);
+
+    void close();
+
+    T borrowObject();
+
+    void returnObject(T obj);
 }

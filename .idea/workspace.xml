@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66109259-6632-4631-8864-e10773ae93c9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" afterPath="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" afterPath="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" />
     </list>
     <ignored path="HttpProxy.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -13,8 +11,13 @@
     <file path="/HttpProxy.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401102544921" ignored="false" />
     <file path="/Numbers.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401100614220" ignored="false" />
     <file path="/RequestHandler.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401102376740" ignored="false" />
-    <file path="/Pool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401102292614" ignored="false" />
-    <file path="/SocketPool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401102316573" ignored="false" />
+    <file path="/Pool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401178818267" ignored="false" />
+    <file path="/SocketPool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401179445115" ignored="false" />
+    <file path="$PROJECT_DIR$/../Network/src/com/westudio/java/InetAddressExample/java.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401160199106" ignored="false" />
+    <file path="$PROJECT_DIR$/../Network/src/com/westudio/java/InetAddressExample.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401161379470" ignored="false" />
+    <file path="/InetAddressExample.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401161377908" ignored="false" />
+    <file path="/BasePool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401179397178" ignored="false" />
+    <file path="/BaseSocketPool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401179194400" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +81,7 @@
       <file leaf-file-name="HttpProxy.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/HttpProxy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="33" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0">
+            <state line="16" column="22" selection-start="396" selection-end="405" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestHandler.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RequestHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="107" selection-start="706" selection-end="706" vertical-scroll-proportion="0.4790749">
+            <state line="21" column="31" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,16 +103,25 @@
       <file leaf-file-name="Pool.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="4" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0">
+            <state line="9" column="26" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SocketPool.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SocketPool.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="42" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
+            <state line="11" column="53" selection-start="263" selection-end="269" vertical-scroll-proportion="0.1821192">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseSocketPool.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/BaseSocketPool.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="20" selection-start="345" selection-end="352" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,7 +130,7 @@
       <file leaf-file-name="Numbers.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="115" selection-start="469" selection-end="469" vertical-scroll-proportion="0.0">
+            <state line="17" column="34" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -144,10 +156,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/westudio/java/HttpProxy.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java" />
-        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" />
-        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/proxy/HttpProxy.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/BasePool.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/BaseSocketPool.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" />
       </list>
     </option>
   </component>
@@ -281,6 +295,7 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tunnel" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -477,40 +492,47 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="115" selection-start="469" selection-end="469" vertical-scroll-proportion="0.0">
+        <state line="17" column="34" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="31" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/HttpProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="22" selection-start="396" selection-end="405" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/BaseSocketPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="20" selection-start="345" selection-end="352" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0">
+        <state line="9" column="26" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="42" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
+        <state line="11" column="53" selection-start="263" selection-end="269" vertical-scroll-proportion="0.1821192">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/HttpProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="33" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="107" selection-start="706" selection-end="706" vertical-scroll-proportion="0.4790749">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
