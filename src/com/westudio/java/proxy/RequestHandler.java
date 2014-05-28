@@ -2,10 +2,8 @@ package com.westudio.java.proxy;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import com.westudio.java.util.pool.SocketPool;
 
 import java.io.IOException;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,10 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class RequestHandler implements HttpHandler {
 
-    private ConcurrentHashMap<String, SocketPool> poolMap;
-
     public RequestHandler() {
-        poolMap = new ConcurrentHashMap<String, SocketPool>();
     }
 
     @Override

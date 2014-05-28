@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66109259-6632-4631-8864-e10773ae93c9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" afterPath="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" afterPath="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/BaseSocketPool.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java" afterPath="$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HttpProxy.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401096778974" ignored="false" />
+    <file path="/Dummy.txt" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401264729259" ignored="false" />
     <file path="/HttpProxy.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401102544921" ignored="false" />
     <file path="/Numbers.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401100614220" ignored="false" />
     <file path="/RequestHandler.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401102376740" ignored="false" />
@@ -81,47 +84,16 @@
       <file leaf-file-name="HttpProxy.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/HttpProxy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="22" selection-start="396" selection-end="405" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="50" column="37" selection-start="1424" selection-end="1431" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestHandler.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="RequestHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="31" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="26" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocketPool.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="53" selection-start="263" selection-end="269" vertical-scroll-proportion="0.1821192">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseSocketPool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/BaseSocketPool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="20" selection-start="345" selection-end="352" vertical-scroll-proportion="0.0">
+            <state line="16" column="26" selection-start="384" selection-end="384" vertical-scroll-proportion="0.21475771">
               <folding />
             </state>
           </provider>
@@ -130,7 +102,7 @@
       <file leaf-file-name="Numbers.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="34" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+            <state line="17" column="44" selection-start="376" selection-end="380" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -156,12 +128,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/westudio/java/HttpProxy.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java" />
-        <option value="$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/proxy/HttpProxy.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/BasePool.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/BaseSocketPool.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java" />
       </list>
     </option>
   </component>
@@ -196,7 +168,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,39 +227,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HttpProxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java-http-proxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="proxy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -405,28 +351,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1054" extended-state="6" />
+    <frame x="0" y="22" width="1920" height="1054" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2470651" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -492,7 +438,14 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="34" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+        <state line="17" column="44" selection-start="376" selection-end="380" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/HttpProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="39" selection-start="725" selection-end="733" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -500,38 +453,34 @@
     <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="31" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="44" selection-start="376" selection-end="380" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="44" selection-start="376" selection-end="380" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/HttpProxy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="22" selection-start="396" selection-end="405" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/BaseSocketPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="20" selection-start="345" selection-end="352" vertical-scroll-proportion="0.0">
+        <state line="50" column="37" selection-start="1424" selection-end="1431" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java">
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="26" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="53" selection-start="263" selection-end="269" vertical-scroll-proportion="0.1821192">
+        <state line="16" column="26" selection-start="384" selection-end="384" vertical-scroll-proportion="0.21475771">
           <folding />
         </state>
       </provider>
