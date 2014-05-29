@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66109259-6632-4631-8864-e10773ae93c9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/BaseSocketPool.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java" afterPath="$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java-http-proxy.iml" afterPath="$PROJECT_DIR$/java-http-proxy.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HttpProxy.iws" />
@@ -14,13 +13,17 @@
     <file path="/HttpProxy.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401102544921" ignored="false" />
     <file path="/Numbers.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401100614220" ignored="false" />
     <file path="/RequestHandler.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401102376740" ignored="false" />
-    <file path="/Pool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401178818267" ignored="false" />
-    <file path="/SocketPool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401179445115" ignored="false" />
+    <file path="/Pool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401331206709" ignored="false" />
+    <file path="/SocketPool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401331462789" ignored="false" />
     <file path="$PROJECT_DIR$/../Network/src/com/westudio/java/InetAddressExample/java.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401160199106" ignored="false" />
     <file path="$PROJECT_DIR$/../Network/src/com/westudio/java/InetAddressExample.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401161379470" ignored="false" />
     <file path="/InetAddressExample.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401161377908" ignored="false" />
     <file path="/BasePool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401179397178" ignored="false" />
     <file path="/BaseSocketPool.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401179194400" ignored="false" />
+    <file path="/SocketException.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401330507834" ignored="false" />
+    <file path="/SocketsException.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401330491082" ignored="false" />
+    <file path="/PooledSocket.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401331390350" ignored="false" />
+    <file path="/SocketFactory.java" changelist="66109259-6632-4631-8864-e10773ae93c9" time="1401331784922" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,10 +93,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestHandler.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RequestHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="26" selection-start="384" selection-end="384" vertical-scroll-proportion="0.21475771">
+            <state line="24" column="0" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pool.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="28" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PooledSocket.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/PooledSocket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="22" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketPool.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="41" selection-start="233" selection-end="233" vertical-scroll-proportion="0.14900662">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="59" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketsException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/exception/SocketsException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="19" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -129,11 +181,15 @@
         <option value="$PROJECT_DIR$/src/com/westudio/java/HttpProxy.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/util/Numbers.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/proxy/HttpProxy.java" />
-        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/BasePool.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/BaseSocketPool.java" />
-        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" />
         <option value="$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/exception/SocketException.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/exception/SocketsException.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/PooledSocket.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java" />
+        <option value="$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketFactory.java" />
       </list>
     </option>
   </component>
@@ -175,6 +231,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="HttpProxy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -227,6 +287,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HttpProxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java-http-proxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HttpProxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java-http-proxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="proxy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -237,12 +353,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tunnel" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/commons-pool2-2.2/commons-pool2-2.2.jar!/" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
@@ -480,11 +599,124 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/westudio/java/proxy/RequestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="26" selection-start="384" selection-end="384" vertical-scroll-proportion="0.21475771">
+        <state line="24" column="0" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/Pool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="28" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/exception/SocketsException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="19" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/PooledSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="22" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="59" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/westudio/java/util/pool/SocketPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="41" selection-start="233" selection-end="233" vertical-scroll-proportion="0.14900662">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>java-http-proxy</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
 
