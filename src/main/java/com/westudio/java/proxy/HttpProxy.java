@@ -20,7 +20,7 @@ public class HttpProxy {
 
     public static void main(String[] args) {
 
-        String host = "0.0.0.0";
+        String host = "127.0.0.1";
         int port = 3128;
         int backlog = 50;
 

@@ -12,6 +12,17 @@ import org.apache.commons.pool2.PooledObjectFactory;
  */
 public class SocketFactory implements PooledObjectFactory<PooledSocket> {
 
+    private final String host;
+    private final int port;
+    private final int timeout;
+
+    public SocketFactory(final String host, final int port, final int timeout) {
+        super();
+        this.host = host;
+        this.port = port;
+        this.timeout = timeout;
+    }
+
     @Override
     public PooledObject<PooledSocket> makeObject() throws Exception {
         return null;
