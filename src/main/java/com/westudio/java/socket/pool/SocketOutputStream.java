@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class SocketOutputStream extends FilterOutputStream {
+
 	private static final int defaultBufferSize = 8192;
 	protected final byte buf[];
 

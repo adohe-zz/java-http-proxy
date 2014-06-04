@@ -8,11 +8,19 @@ import java.util.concurrent.TimeUnit;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 
 public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
 
 	Cache<String, HostInfo> cache = CacheBuilder.newBuilder().maximumSize(1000)
 			.expireAfterWrite(30, TimeUnit.MINUTES).softValues().build();
+
+    public SocketPool() {
+    }
+
+    public SocketPool(final GenericKeyedObjectPoolConfig config) {
+        super(new SocketFactory(), config);
+    }
 
 	@Override
 	public HostInfo makeKey(SocketConnection resource) {
