@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 
 //@ careless of ThreadSafe because a Socket must be held by no more than one SocketInputStream/SocketOutputStream at a time.
-public class SockInputStream extends FilterInputStream {
+public class SocketInputStream extends FilterInputStream {
 	private static final int defaultBufferSize = 8192;
 	protected byte buf[];
 	protected int count, limit;
 
-	public SockInputStream(InputStream in, int size) {
+	public SocketInputStream(InputStream in, int size) {
 		super(in);
 		if (size <= 0) {
 			throw new IllegalArgumentException("Buffer size <= 0");
@@ -18,7 +18,7 @@ public class SockInputStream extends FilterInputStream {
 		buf = new byte[size];
 	}
 
-	public SockInputStream(InputStream in) {
+	public SocketInputStream(InputStream in) {
 		this(in, defaultBufferSize);
 	}
 

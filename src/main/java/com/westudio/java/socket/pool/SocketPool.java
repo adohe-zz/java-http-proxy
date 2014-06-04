@@ -8,12 +8,13 @@ import java.util.concurrent.TimeUnit;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
-public final class SocketPool extends KeyedPool<HostInfo, SockConnection>{
+public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
 
 	Cache<String,HostInfo> cache = CacheBuilder.newBuilder().maximumSize(1000)
 			.expireAfterWrite(30, TimeUnit.MINUTES).softValues().build();
+
 	@Override
-	public HostInfo makeKey(SockConnection resource) {
+	public HostInfo makeKey(SocketConnection resource) {
 		return resource.getHostInfo();
 	}
 
@@ -34,6 +35,7 @@ public final class SocketPool extends KeyedPool<HostInfo, SockConnection>{
 		}
 		return hinfo;
 	}
+
 	public static void main(String[] args) {
 		System.out.println(URI.create("http://blog.csdn.net/kongxx/article/details/6612760").getPort());
 	}

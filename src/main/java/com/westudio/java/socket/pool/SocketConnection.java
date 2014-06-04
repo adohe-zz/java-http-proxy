@@ -6,18 +6,19 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 
-public class SockConnection implements Closeable {
+public class SocketConnection implements Closeable {
+
 	private HostInfo hostInfo;
 	private Socket socket;
-	private SockOutputStream outputStream;
-	private SockInputStream inputStream;
+	private SocketOutputStream outputStream;
+	private SocketInputStream inputStream;
 	private int timeout = TempConstants.SOCKCONNETCTION_SOTIMEOUT;
 
 	/*protected SockConnection() {
 
 	}*/
 
-	public SockConnection(final HostInfo hostInfo) {
+	public SocketConnection(final HostInfo hostInfo) {
 		super();
 		if (null == hostInfo) {
 			throw new IllegalArgumentException("hostInfo mnust not be null");
@@ -25,7 +26,7 @@ public class SockConnection implements Closeable {
 		this.hostInfo = hostInfo;
 	}
 
-	public SockConnection(final HostInfo hostInfo, final int timeout) {
+	public SocketConnection(final HostInfo hostInfo, final int timeout) {
 		this(hostInfo);
 		this.timeout=timeout;
 	}
@@ -60,7 +61,7 @@ public class SockConnection implements Closeable {
 
 	/**
 	 * use these settings by default //FIXME
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	public void connect() throws IOException {
@@ -73,8 +74,8 @@ public class SockConnection implements Closeable {
 			socket.connect(new InetSocketAddress(hostInfo.getHostname(),
 					hostInfo.getPort()), timeout);
 			socket.setSoTimeout(timeout);
-			outputStream = new SockOutputStream(socket.getOutputStream());
-			inputStream = new SockInputStream(socket.getInputStream());
+			outputStream = new SocketOutputStream(socket.getOutputStream());
+			inputStream = new SocketInputStream(socket.getInputStream());
 		}
 	}
 

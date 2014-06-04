@@ -4,17 +4,17 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class SockOutputStream extends FilterOutputStream {
+public class SocketOutputStream extends FilterOutputStream {
 	private static final int defaultBufferSize = 8192;
 	protected final byte buf[];
 
 	protected int count;
 
-	public SockOutputStream(final OutputStream out) {
+	public SocketOutputStream(final OutputStream out) {
 		this(out,defaultBufferSize);
 	}
 
-	public SockOutputStream(final OutputStream out, final int size) {
+	public SocketOutputStream(final OutputStream out, final int size) {
 		super(out);
 		if (size <= 0) {
 			throw new IllegalArgumentException("Buffer size <= 0");

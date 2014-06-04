@@ -4,38 +4,38 @@ import org.apache.commons.pool2.KeyedPooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
 
-public class SocketFactory implements KeyedPooledObjectFactory<HostInfo, SockConnection>{
+public class SocketFactory implements KeyedPooledObjectFactory<HostInfo, SocketConnection>{
 
 	@Override
-	public PooledObject<SockConnection> makeObject(HostInfo key)
+	public PooledObject<SocketConnection> makeObject(HostInfo key)
 			throws Exception {
-		SockConnection sockConnection=new SockConnection(key);
+		SocketConnection sockConnection=new SocketConnection(key);
 		sockConnection.connect();
-		return new DefaultPooledObject<SockConnection>(sockConnection);
+		return new DefaultPooledObject<SocketConnection>(sockConnection);
 	}
 
 	@Override
-	public void destroyObject(HostInfo key, PooledObject<SockConnection> p)
+	public void destroyObject(HostInfo key, PooledObject<SocketConnection> p)
 			throws Exception {
-		SockConnection sockConn=p.getObject();
+		SocketConnection sockConn=p.getObject();
 		sockConn.close();
 	}
 
 	@Override
-	public boolean validateObject(HostInfo key, PooledObject<SockConnection> p) {
-		SockConnection sockConn=p.getObject();
+	public boolean validateObject(HostInfo key, PooledObject<SocketConnection> p) {
+		SocketConnection sockConn=p.getObject();
 		return sockConn.isConnected();// FIXME not correct implementation!!!!!!
 	}
 
 	@Override
-	public void activateObject(HostInfo key, PooledObject<SockConnection> p)
+	public void activateObject(HostInfo key, PooledObject<SocketConnection> p)
 			throws Exception {
-		SockConnection sockConn=p.getObject();
+		SocketConnection sockConn=p.getObject();
 		sockConn.connect();// FIXME not correct implementation!!!!!!
 	}
 
 	@Override
-	public void passivateObject(HostInfo key, PooledObject<SockConnection> p)
+	public void passivateObject(HostInfo key, PooledObject<SocketConnection> p)
 			throws Exception {
 		// TODO Auto-generated method stub
 		

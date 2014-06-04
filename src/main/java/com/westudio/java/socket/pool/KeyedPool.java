@@ -1,19 +1,21 @@
 package com.westudio.java.socket.pool;
 
+import com.westudio.java.socket.pool.exceptions.SocketsException;
 import org.apache.commons.pool2.KeyedPooledObjectFactory;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 
-import com.westudio.java.util.pool.exception.SocketsException;
 
 /**
  * An adaptor of GenericKeyedObjectPool
  */
 public abstract class KeyedPool<K, T> {
+
 	protected GenericKeyedObjectPool<K, T> internalPool;
 
 	public KeyedPool() {
 	}
+
 	/**
 	 * should be singleton? //FIXME
 	 * @param factory
@@ -42,6 +44,7 @@ public abstract class KeyedPool<K, T> {
 	public T getResource(K key) throws Exception {
 		return internalPool.borrowObject(key);
 	}
+
 	public T getResource(String uri) throws Exception {
 		return internalPool.borrowObject(makeKey(uri));
 	}
@@ -55,6 +58,7 @@ public abstract class KeyedPool<K, T> {
 	}
 
 	public abstract K makeKey(T resource);
+
 	public abstract K makeKey(String uri);
 	
 	public void destroy() {
