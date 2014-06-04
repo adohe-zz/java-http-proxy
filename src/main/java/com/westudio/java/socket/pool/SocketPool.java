@@ -10,7 +10,7 @@ import com.google.common.cache.CacheBuilder;
 
 public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
 
-	Cache<String,HostInfo> cache = CacheBuilder.newBuilder().maximumSize(1000)
+	Cache<String, HostInfo> cache = CacheBuilder.newBuilder().maximumSize(1000)
 			.expireAfterWrite(30, TimeUnit.MINUTES).softValues().build();
 
 	@Override
@@ -19,8 +19,8 @@ public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
 	}
 
 	@Override
-	public HostInfo makeKey(String uriStr) {
-		final URI uri = URI.create(uriStr);// FIXME
+	public HostInfo makeKey(String url) {
+		final URI uri = URI.create(url);// FIXME
 		final int port=(-1==uri.getPort())?TempConstants.SOCKCONNETCTION_PORT:uri.getPort();
 		HostInfo hinfo = null;
 		try {

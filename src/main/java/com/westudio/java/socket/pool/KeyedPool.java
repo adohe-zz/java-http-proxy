@@ -17,7 +17,6 @@ public abstract class KeyedPool<K, T> {
 	}
 
 	/**
-	 * should be singleton? //FIXME
 	 * @param factory
 	 * @param config
 	 */
@@ -26,6 +25,7 @@ public abstract class KeyedPool<K, T> {
 	}
 
 	private void initPool(KeyedPooledObjectFactory<K, T> factory,final GenericKeyedObjectPoolConfig config) {
+
 		if (this.internalPool != null) {
 			try {
 				closeInternalPool();
@@ -41,20 +41,28 @@ public abstract class KeyedPool<K, T> {
 		});
 	}
 
-	public T getResource(K key) throws Exception {
-		return internalPool.borrowObject(key);
-	}
+	public T getResource(K key) {
+        try {
+            return internalPool.borrowObject(key);
+        } catch (Exception e) {
+            throw new SocketsException("could not get a resource from the pool.", e);
+        }
+    }
 
-	public T getResource(String uri) throws Exception {
-		return internalPool.borrowObject(makeKey(uri));
-	}
+	public T getResource(String uri) {
+        try {
+            return internalPool.borrowObject(makeKey(uri));
+        } catch (Exception e) {
+            throw new SocketsException("could not get a resource from the pool.", e);
+        }
+    }
 
 	public void returnResource(final T resource) {
 		if (resource == null) {
 			return;
 		}
-		K key=makeKey(resource);
-		internalPool.returnObject(key,resource);
+		K key = makeKey(resource);
+		internalPool.returnObject(key, resource);
 	}
 
 	public abstract K makeKey(T resource);
@@ -72,5 +80,4 @@ public abstract class KeyedPool<K, T> {
 			throw new SocketsException("Could not destroy the pool", e);
 		}
 	}
-	// FIXME
 }
