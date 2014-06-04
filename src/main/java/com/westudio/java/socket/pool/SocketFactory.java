@@ -4,14 +4,14 @@ import org.apache.commons.pool2.KeyedPooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
 
-public class SocketFactory implements KeyedPooledObjectFactory<HostInfo, SocketConnection>{
+public class SocketFactory implements KeyedPooledObjectFactory<HostInfo, SocketConnection> {
 
 	@Override
 	public PooledObject<SocketConnection> makeObject(HostInfo key)
 			throws Exception {
-		SocketConnection sockConnection=new SocketConnection(key);
-		sockConnection.connect();
-		return new DefaultPooledObject<SocketConnection>(sockConnection);
+		SocketConnection socketConnection = new SocketConnection(key);
+		socketConnection.connect();
+		return new DefaultPooledObject<SocketConnection>(socketConnection);
 	}
 
 	@Override
