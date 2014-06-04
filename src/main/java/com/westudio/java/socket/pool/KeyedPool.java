@@ -5,6 +5,8 @@ import org.apache.commons.pool2.KeyedPooledObjectFactory;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 
+import java.net.URI;
+
 
 /**
  * An adaptor of GenericKeyedObjectPool
@@ -67,8 +69,10 @@ public abstract class KeyedPool<K, T> {
 
 	public abstract K makeKey(T resource);
 
-	public abstract K makeKey(String uri);
-	
+	public abstract K makeKey(String url);
+
+    public abstract K makeKey(URI uri);
+
 	public void destroy() {
 		closeInternalPool();
 	}

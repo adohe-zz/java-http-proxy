@@ -1,6 +1,7 @@
 package com.westudio.java.socket.pool;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -20,23 +21,34 @@ public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
 
 	@Override
 	public HostInfo makeKey(String url) {
-		final URI uri = URI.create(url);// FIXME
-		final int port=(-1==uri.getPort())?TempConstants.SOCKCONNETCTION_PORT:uri.getPort();
-		HostInfo hinfo = null;
-		try {
-			hinfo = cache.get(uri.getHost() + ":" + uri.getPort(),
-					new Callable<HostInfo>() {
-						@Override
-						public HostInfo call() throws Exception {
-							return new HostInfo(uri.getHost(),uri.getPort());
-						}
-					});
-		} catch (ExecutionException e) {
-		}
-		return hinfo;
-	}
 
-	public static void main(String[] args) {
+        try {
+            URI uri = new URI(url);
+            return makeKey(uri);
+        } catch (URISyntaxException e) {
+        }
+
+        return null;
+    }
+
+    @Override
+    public HostInfo makeKey(final URI uri) {
+        final int port = (uri.getPort() == -1) ? TempConstants.SOCKCONNETCTION_PORT : uri.getPort();
+        HostInfo hostInfo = null;
+        try {
+            hostInfo = cache.get(uri.getHost() + ":" + port, new Callable<HostInfo>() {
+                @Override
+                public HostInfo call() throws Exception {
+                    return new HostInfo(uri.getHost(), port);
+                }
+            });
+        } catch (ExecutionException e) {
+        }
+
+        return hostInfo;
+    }
+
+    public static void main(String[] args) {
 		System.out.println(URI.create("http://blog.csdn.net/kongxx/article/details/6612760").getPort());
 	}
 }
