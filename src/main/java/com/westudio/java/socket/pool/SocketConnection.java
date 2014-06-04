@@ -4,6 +4,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.net.SocketException;
 
 public class SocketConnection implements Closeable {
@@ -131,4 +132,31 @@ public class SocketConnection implements Closeable {
 	public void setTimeout(final int timeout) {
 		this.timeout = timeout;
 	}
+	@Override
+	public String toString() {
+		if (this.socket != null) {
+            StringBuilder sb = new StringBuilder();
+            SocketAddress remote= this.socket.getRemoteSocketAddress();
+            SocketAddress local= this.socket.getLocalSocketAddress();
+            if (remote != null||local != null) {
+                formatAddress(sb, local);
+                sb.append("<->");
+                formatAddress(sb, remote);
+            }
+            return sb.toString();
+        } else {
+            return super.toString();
+        }
+	}
+	private static void formatAddress(final StringBuilder sb, final SocketAddress socketAddress) {
+        if (socketAddress instanceof InetSocketAddress) {
+            InetSocketAddress addr = ((InetSocketAddress) socketAddress);
+            sb.append(addr.getAddress() != null ? addr.getAddress().getHostAddress() :
+                addr.getAddress())
+            .append(':')
+            .append(addr.getPort());
+        } else {
+        	sb.append(socketAddress);
+        }
+    }
 }
