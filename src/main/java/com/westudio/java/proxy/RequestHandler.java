@@ -6,6 +6,7 @@ import com.westudio.java.socket.pool.HostInfo;
 import com.westudio.java.socket.pool.SocketConnection;
 import com.westudio.java.socket.pool.SocketPool;
 import com.westudio.java.util.Numbers;
+import com.westudio.java.util.Streams;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 
 import java.io.BufferedOutputStream;
@@ -127,7 +128,8 @@ public class RequestHandler implements HttpHandler {
             if (contentLength > 0) {
                 writeHeader(outputStream, "Content-Length", "" + contentLength);
                 writeln(outputStream);
-                //TODO:ADD REQUEST BODY
+                // Simply pipe the input stream to the output stream
+                Streams.pipe(httpExchange.getRequestBody(), outputStream);
             } else if (contentLength == 0) {
                 writeHeader(outputStream, "Content-Length", "0");
                 writeln(outputStream);
