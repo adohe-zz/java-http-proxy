@@ -30,6 +30,7 @@ public class SocketInputStream extends FilterInputStream {
 		}
 		return buf[count++];
 	}
+
 	/**
 	 * only for those protocols that use '\r\n' to end/start a new line.
 	 * @return
