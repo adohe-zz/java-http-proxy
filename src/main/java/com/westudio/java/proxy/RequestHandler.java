@@ -115,7 +115,26 @@ public class RequestHandler implements HttpHandler {
                         }
                     }
 
+                    writeHeader(outputStream, key, value);
                 }
+            }
+
+            if (!withHost) {
+                writeHeader(outputStream, "Host", host + ":" + port);
+            }
+            writeHeader(outputStream, "Connection", "Keep-Alive");
+
+            if (contentLength > 0) {
+                writeHeader(outputStream, "Content-Length", "" + contentLength);
+                writeln(outputStream);
+                //TODO:ADD REQUEST BODY
+            } else if (contentLength == 0) {
+                writeHeader(outputStream, "Content-Length", "0");
+                writeln(outputStream);
+            } else if ("GET".equals(method) || "HEAD".equals(method)) {
+                writeln(outputStream);
+            } else {
+                //TODO:ADD REQUEST BODY CHUNKED
             }
         } catch (IOException e) {
 
