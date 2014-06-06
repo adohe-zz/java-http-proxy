@@ -1,5 +1,6 @@
 package com.westudio.java.proxy;
 
+import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.westudio.java.socket.pool.HostInfo;
@@ -9,10 +10,7 @@ import com.westudio.java.util.Numbers;
 import com.westudio.java.util.Streams;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -162,7 +160,73 @@ public class RequestHandler implements HttpHandler {
             }
             outputStream.flush();
 
+            // Generate response headers
+            Headers headers = httpExchange.getResponseHeaders();
+            InputStream is = new BufferedInputStream(socketConnection.getSocket().getInputStream());
+            StringBuilder sb = new StringBuilder();
+            int status = 0;
+            boolean connectionClose = false;
+            contentLength = 0;
+            while (true) {
+                int b = is.read();
+                if (b < 0) {
+                    throw new IOException("Connection Lost");
+                }
 
+                if (b == '\r') {
+                    continue;
+                }
+                if (b != '\n') {
+                    sb.append((char)b);
+                    continue;
+                }
+
+                if (sb.length() == 0) {
+                    if (status == 100) {
+                        status = 0;
+                        continue;
+                    }
+                    break;
+                }
+
+                if (status == 0) {
+                    String[] ss = sb.toString().split(" ");
+                    if (ss.length < 2) {
+                        throw new IOException("Response error [" + sb + "]");
+                    }
+                    status = Numbers.parseInt(ss[1]);
+                } else if (status != 100) {
+                    int index = sb.indexOf(": ");
+                    if (index >= 0) {
+                        String key = sb.substring(0, index);
+                        String value = sb.substring(index + 2);
+
+                        if (SKIP_HEADERS.contains(key.toUpperCase())) {
+                            if (key.equalsIgnoreCase("Content-Length")) {
+                                contentLength = Numbers.parseInt(value);
+                            } else if (key.equalsIgnoreCase("Transfer-Encoding")) {
+                                if (value.equalsIgnoreCase("chunked")) {
+                                    contentLength = -1;
+                                }
+                            } else if (!connectionClose) {
+                                if (key.equalsIgnoreCase("Connection")) {
+                                    connectionClose = value.equalsIgnoreCase("close");
+                                }
+                            }
+                        } else {
+                            headers.add(key, value);
+                        }
+                    }
+                }
+
+                sb.setLength(0);
+            }
+
+            // Handle response body
+            if (contentLength == 0 && method == "HEAD") {
+                httpExchange.sendResponseHeaders(status, -1);
+                return;
+            }
         } catch (IOException e) {
 
         }
