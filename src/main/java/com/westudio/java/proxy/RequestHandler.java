@@ -46,6 +46,7 @@ public class RequestHandler implements HttpHandler {
             "DNT"
     ));
     private static final int RECV_MAX_CHUNK_SIZE = 4095;
+    private static final int RESP_MAX_SIZE = 65536;
     private static final String HEX_DIGITS = "0123456789ABCDEF";
 
     public RequestHandler() {
@@ -225,7 +226,14 @@ public class RequestHandler implements HttpHandler {
             // Handle response body
             if (contentLength == 0 && method == "HEAD") {
                 httpExchange.sendResponseHeaders(status, -1);
+                //TODO:RETURN THE SOCKET RESOURCE TO THE POOL
                 return;
+            }
+
+            OutputStream os = httpExchange.getResponseBody();
+            byte[] buffer = new byte[RESP_MAX_SIZE];
+            if (contentLength > 0) {
+                //TODO: WRITE RESPONSE BODY TO THE EXCHANGE RESPONSE BODY
             }
         } catch (IOException e) {
 

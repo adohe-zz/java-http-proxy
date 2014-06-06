@@ -17,20 +17,20 @@ public class SocketFactory implements KeyedPooledObjectFactory<HostInfo, SocketC
 	@Override
 	public void destroyObject(HostInfo key, PooledObject<SocketConnection> p)
 			throws Exception {
-		SocketConnection sockConn=p.getObject();
+		SocketConnection sockConn = p.getObject();
 		sockConn.close();
 	}
 
 	@Override
 	public boolean validateObject(HostInfo key, PooledObject<SocketConnection> p) {
-		SocketConnection sockConn=p.getObject();
+		SocketConnection sockConn = p.getObject();
 		return sockConn.isConnected();// FIXME not correct implementation!!!!!!
 	}
 
 	@Override
 	public void activateObject(HostInfo key, PooledObject<SocketConnection> p)
 			throws Exception {
-		SocketConnection sockConn=p.getObject();
+		SocketConnection sockConn = p.getObject();
 		sockConn.connect();// FIXME not correct implementation!!!!!!
 	}
 
