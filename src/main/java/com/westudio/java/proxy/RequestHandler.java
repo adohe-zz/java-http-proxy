@@ -11,6 +11,7 @@ import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
@@ -46,6 +47,9 @@ public class RequestHandler implements HttpHandler {
             "X-PKCS7-CERTIFICATES-BASE64",
             "DNT"
     ));
+    private static final int RECV_MAX_CHUNK_SIZE = 4095;
+    private static final String HEX_DIGITS = "0123456789ABCDEF";
+
     public RequestHandler() {
     }
 
@@ -136,8 +140,29 @@ public class RequestHandler implements HttpHandler {
             } else if ("GET".equals(method) || "HEAD".equals(method)) {
                 writeln(outputStream);
             } else {
-                //TODO:ADD REQUEST BODY CHUNKED
+                // Handle chunked transfer encoding
+                writeHeader(outputStream, "Transfer-Encoding", "chunked");
+                InputStream is = httpExchange.getRequestBody();
+                byte[] buffer = new byte[RECV_MAX_CHUNK_SIZE];
+                buffer[3] = '\r';
+                buffer[4] = '\n';
+                int bytesRead;
+                while ((bytesRead = is.read(buffer, 5, RECV_MAX_CHUNK_SIZE)) > 0) {
+                    buffer[0] = (byte)HEX_DIGITS.charAt(bytesRead / 256);
+                    buffer[1] = (byte)HEX_DIGITS.charAt(bytesRead / 16 % 16);
+                    buffer[2] = (byte)HEX_DIGITS.charAt(bytesRead % 16);
+                    buffer[bytesRead + 5] = '\r';
+                    buffer[bytesRead + 6] = '\n';
+                    outputStream.write(buffer, 0, bytesRead + 7);
+                }
+                // Add the last block chunk of size 0
+                outputStream.write('0');
+                writeln(outputStream);
+                writeln(outputStream);
             }
+            outputStream.flush();
+
+
         } catch (IOException e) {
 
         }
