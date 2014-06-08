@@ -69,6 +69,28 @@ public class RequestHandler implements HttpHandler {
         writeln(ops);
     }
 
+    private static void copyResponse(InputStream is, OutputStream os, byte[] buffer, int length) throws IOException {
+        int bytesToRead = length;
+        while (bytesToRead > 0) {
+            int bytesRead = is.read(buffer, 0, Math.min(RESP_MAX_SIZE, bytesToRead));
+            if (bytesRead < 0) {
+                throw new IOException("Connection lost");
+            }
+            if (bytesRead == 0) {
+                throw new IOException("Zero bytes read");
+            }
+
+            bytesToRead -= bytesRead;
+            try {
+                os.write(buffer, 0, bytesRead);
+            } catch (IOException e) {
+                if (bytesToRead > RESP_MAX_SIZE) {
+                    //TODO:HANDLE TO MUCH BYTES LEFT
+                }
+            }
+        }
+    }
+
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
@@ -163,7 +185,7 @@ public class RequestHandler implements HttpHandler {
 
             // Generate response headers
             Headers headers = httpExchange.getResponseHeaders();
-            InputStream is = new BufferedInputStream(socketConnection.getSocket().getInputStream());
+            InputStream is = socketConnection.getSocket().getInputStream();
             StringBuilder sb = new StringBuilder();
             int status = 0;
             boolean connectionClose = false;
@@ -233,10 +255,42 @@ public class RequestHandler implements HttpHandler {
             OutputStream os = httpExchange.getResponseBody();
             byte[] buffer = new byte[RESP_MAX_SIZE];
             if (contentLength > 0) {
-                //TODO: WRITE RESPONSE BODY TO THE EXCHANGE RESPONSE BODY
+                httpExchange.sendResponseHeaders(status, contentLength);
+                copyResponse(is, os, buffer, contentLength);
+                return;
+            }
+
+            // HANDLE THE CHUNKED RESPONSE BODY
+            httpExchange.sendResponseHeaders(status, 0);
+            int chunkSize = 0;
+            boolean crlf = false;
+            while (true) {
+                int b = is.read();
+                if (b < 0) {
+                    throw new IOException("Connection lost");
+                }
+                if (crlf) {
+                    if (b == '\n') {
+                        chunkSize = 0;
+                        crlf = false;
+                    }
+                } else if (b == '\n') {
+                    if (chunkSize <= 0) {
+                        break;
+                    }
+                    copyResponse(is, os, buffer, chunkSize);
+                    crlf = true;
+                } else {
+                    b = HEX_DIGITS.indexOf(Character.toUpperCase(b));
+                    if (b >= 0) {
+                        chunkSize = chunkSize * 16 + b; //FIXME:CORRECT?
+                    }
+                }
             }
         } catch (IOException e) {
-
+            //TODO:HANDLE EXCEPTION
+        } finally {
+            //TODO:CLOSE RESOURCES
         }
     }
 }
