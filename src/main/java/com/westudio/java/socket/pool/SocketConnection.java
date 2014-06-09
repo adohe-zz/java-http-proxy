@@ -15,10 +15,6 @@ public class SocketConnection implements Closeable {
 	private SocketInputStream inputStream;
 	private int timeout = TempConstants.SOCKCONNETCTION_SOTIMEOUT;
 
-	/*protected SockConnection() {
-
-	}*/
-
 	public SocketConnection(final HostInfo hostInfo) {
 		super();
 		if (null == hostInfo) {

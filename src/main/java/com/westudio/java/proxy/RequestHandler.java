@@ -104,7 +104,7 @@ public class RequestHandler implements HttpHandler {
         String path = uri.getPath();
         String method = httpExchange.getRequestMethod();
 
-        SocketConnection socketConnection;
+        SocketConnection socketConnection = null;
         try {
             socketConnection = socketPool.getResource(new HostInfo(host, port));
             // Add request header
@@ -290,7 +290,12 @@ public class RequestHandler implements HttpHandler {
         } catch (IOException e) {
             //TODO:HANDLE EXCEPTION
         } finally {
-            //TODO:CLOSE RESOURCES
+            //FIXME
+            if (socketPool != null) {
+                socketPool.returnResource(socketConnection);
+            }
+            httpExchange.sendResponseHeaders(502, -1);
+            httpExchange.close();
         }
     }
 }
