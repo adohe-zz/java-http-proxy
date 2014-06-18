@@ -85,7 +85,7 @@ public class RequestHandler implements HttpHandler {
                 os.write(buffer, 0, bytesRead);
             } catch (IOException e) {
                 if (bytesToRead > RESP_MAX_SIZE) {
-                    //TODO:HANDLE TO MUCH BYTES LEFT
+                    throw new IOException("To many bytes");
                 }
             }
         }

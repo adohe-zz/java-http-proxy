@@ -4,7 +4,16 @@ import org.apache.commons.pool2.KeyedPooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
 
-public class SocketFactory implements KeyedPooledObjectFactory<HostInfo, SocketConnection> {
+import javax.net.SocketFactory;
+
+public class SocketsFactory implements KeyedPooledObjectFactory<HostInfo, SocketConnection> {
+
+    private static SocketFactory secureFactory;
+    private static SocketFactory plainFactory;
+
+    static {
+
+    }
 
 	@Override
 	public PooledObject<SocketConnection> makeObject(HostInfo key)

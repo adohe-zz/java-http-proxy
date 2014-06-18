@@ -19,7 +19,7 @@ public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
     }
 
     public SocketPool(final GenericKeyedObjectPoolConfig config) {
-        super(new SocketFactory(), config);
+        super(new SocketsFactory(), config);
     }
 
 	@Override
