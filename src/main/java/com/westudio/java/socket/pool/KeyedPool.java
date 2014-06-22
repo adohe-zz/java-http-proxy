@@ -22,11 +22,11 @@ public abstract class KeyedPool<K, T> {
 	 * @param factory
 	 * @param config
 	 */
-	public KeyedPool(KeyedPooledObjectFactory<K, T> factory,final GenericKeyedObjectPoolConfig config) {
+	public KeyedPool(KeyedPooledObjectFactory<K, T> factory, final GenericKeyedObjectPoolConfig config) {
 		initPool(factory, config);
 	}
 
-	private void initPool(KeyedPooledObjectFactory<K, T> factory,final GenericKeyedObjectPoolConfig config) {
+	private void initPool(KeyedPooledObjectFactory<K, T> factory, final GenericKeyedObjectPoolConfig config) {
 
 		if (this.internalPool != null) {
 			try {

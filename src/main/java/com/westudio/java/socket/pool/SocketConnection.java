@@ -15,17 +15,22 @@ public class SocketConnection implements Closeable {
 	private SocketInputStream inputStream;
 	private int timeout = TempConstants.SOCKCONNETCTION_SOTIMEOUT;
 
-	public SocketConnection(final HostInfo hostInfo) {
-		super();
-		if (null == hostInfo) {
-			throw new IllegalArgumentException("hostInfo mnust not be null");
-		}
-		this.hostInfo = hostInfo;
-	}
+    public SocketConnection(Socket socket, final HostInfo hostInfo) {
+        super();
+        if (socket == null) {
+            throw new IllegalArgumentException("socket must not be null");
+        }
+        if (hostInfo == null) {
+            throw new IllegalArgumentException("hostinfo must not be null");
+        }
 
-	public SocketConnection(final HostInfo hostInfo, final int timeout) {
-		this(hostInfo);
-		this.timeout=timeout;
+        this.socket = socket;
+        this.hostInfo = hostInfo;
+    }
+
+	public SocketConnection(Socket socket, final HostInfo hostInfo, final int timeout) {
+		this(socket, hostInfo);
+		this.timeout = timeout;
 	}
 
 	public void adjustTimeout(final int timeout) throws IOException {
@@ -132,8 +137,8 @@ public class SocketConnection implements Closeable {
 	public String toString() {
 		if (this.socket != null) {
             StringBuilder sb = new StringBuilder();
-            SocketAddress remote= this.socket.getRemoteSocketAddress();
-            SocketAddress local= this.socket.getLocalSocketAddress();
+            SocketAddress remote = this.socket.getRemoteSocketAddress();
+            SocketAddress local = this.socket.getLocalSocketAddress();
             if (remote != null||local != null) {
                 formatAddress(sb, local);
                 sb.append("<->");
@@ -144,6 +149,7 @@ public class SocketConnection implements Closeable {
             return super.toString();
         }
 	}
+
 	private static void formatAddress(final StringBuilder sb, final SocketAddress socketAddress) {
         if (socketAddress instanceof InetSocketAddress) {
             InetSocketAddress addr = ((InetSocketAddress) socketAddress);
