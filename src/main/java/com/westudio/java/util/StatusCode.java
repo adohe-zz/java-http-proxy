@@ -1,12 +1,5 @@
 package com.westudio.java.util;
 
-/**
- * Created with IntelliJ IDEA.
- * User: nankonami
- * Date: 14-6-8
- * Time: 上午11:15
- * To change this template use File | Settings | File Templates.
- */
 public enum StatusCode {
 
     Accepted(202),//Accepted 指示请求已被接受做进一步处理。

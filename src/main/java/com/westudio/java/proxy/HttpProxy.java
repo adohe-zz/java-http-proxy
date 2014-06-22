@@ -7,13 +7,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * Created with IntelliJ IDEA.
- * User: tonyhe
- * Date: 14-5-26
- * Time: 下午5:47
- * To change this template use File | Settings | File Templates.
- */
 public class HttpProxy {
 
     private static AtomicBoolean running = new AtomicBoolean(true);
