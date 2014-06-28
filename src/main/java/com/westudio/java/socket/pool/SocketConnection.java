@@ -13,7 +13,7 @@ public class SocketConnection implements Closeable {
 	private Socket socket;
 	private SocketOutputStream outputStream;
 	private SocketInputStream inputStream;
-	private int timeout = TempConstants.SOCKCONNETCTION_SOTIMEOUT;
+	private int timeout = 15 * 1000;
 
     public SocketConnection(Socket socket, final HostInfo hostInfo) {
         super();
