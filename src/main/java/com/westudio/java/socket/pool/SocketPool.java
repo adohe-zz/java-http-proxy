@@ -15,6 +15,8 @@ public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
 	Cache<String, HostInfo> cache = CacheBuilder.newBuilder().maximumSize(1000)
 			.expireAfterWrite(30, TimeUnit.MINUTES).softValues().build();
 
+    private final int PORT = 80;
+
     public SocketPool() {
     }
 
@@ -41,7 +43,7 @@ public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
 
     @Override
     public HostInfo makeKey(final URI uri) {
-        final int port = (uri.getPort() == -1) ? TempConstants.SOCKCONNETCTION_PORT : uri.getPort();
+        final int port = (uri.getPort() == -1) ? PORT : uri.getPort();
         HostInfo hostInfo = null;
         try {
             hostInfo = cache.get(uri.getHost() + ":" + port, new Callable<HostInfo>() {

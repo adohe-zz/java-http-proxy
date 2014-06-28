@@ -1,7 +1,5 @@
 package com.westudio.java.socket.pool;
 
-import com.westudio.java.util.Constants;
-
 import java.io.Serializable;
 
 public class HostInfo implements Cloneable, Serializable {
