@@ -46,10 +46,10 @@ public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
         final int port = (uri.getPort() == -1) ? PORT : uri.getPort();
         HostInfo hostInfo = null;
         try {
-            hostInfo = cache.get(uri.getHost() + ":" + port, new Callable<HostInfo>() {
+            hostInfo = cache.get(uri.getScheme() + "://" + uri.getHost() + ":" + port, new Callable<HostInfo>() {
                 @Override
                 public HostInfo call() throws Exception {
-                    return new HostInfo(uri.getHost(), port);
+                    return new HostInfo(uri.getHost(), port, uri.getScheme());
                 }
             });
         } catch (ExecutionException e) {

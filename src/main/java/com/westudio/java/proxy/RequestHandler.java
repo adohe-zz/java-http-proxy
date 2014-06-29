@@ -99,7 +99,7 @@ public class RequestHandler implements HttpHandler {
 
         SocketConnection socketConnection = null;
         try {
-            socketConnection = socketPool.getResource(new HostInfo(host, port));
+            socketConnection = socketPool.getResource(new HostInfo(host, port, schema));
             // Add request header
             BufferedOutputStream outputStream = new BufferedOutputStream(socketConnection.getSocket().getOutputStream());
             write(outputStream, method);
