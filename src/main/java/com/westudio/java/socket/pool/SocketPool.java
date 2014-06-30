@@ -49,7 +49,7 @@ public final class SocketPool extends KeyedPool<HostInfo, SocketConnection> {
             hostInfo = cache.get(uri.getScheme() + "://" + uri.getHost() + ":" + port, new Callable<HostInfo>() {
                 @Override
                 public HostInfo call() throws Exception {
-                    return new HostInfo(uri.getHost(), port, uri.getScheme());
+                    return new HostInfo(uri.getHost(), port);
                 }
             });
         } catch (ExecutionException e) {

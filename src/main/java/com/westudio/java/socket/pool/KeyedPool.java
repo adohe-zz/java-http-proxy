@@ -31,8 +31,7 @@ public abstract class KeyedPool<K, T> {
 		if (this.internalPool != null) {
 			try {
 				closeInternalPool();
-			} catch (Exception e) {
-			}
+			} catch (Exception e) {/**/}
 		}
 		this.internalPool = new GenericKeyedObjectPool<K, T>(factory, config);
 		//FIXME a better way to initiate see Effective JAVA...？

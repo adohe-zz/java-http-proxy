@@ -8,19 +8,16 @@ public class HostInfo implements Cloneable, Serializable {
 
 	private final String hostname;
 	private final int port;
-	private final String schemeName;
 	public final static int DEFAULT_PORT = 80;
-	public static final String DEFAULT_SCHEME_NAME = "http"; //e.f. jdbc:mysql
 
-	public HostInfo(String hostname, int port, String schemaName) {
+	public HostInfo(String hostname, int port) {
 		super();
 		this.hostname = hostname;
 		this.port = port;
-        this.schemeName = schemaName;
 	}
 
 	public HostInfo(String hostname) {
-		this(hostname, DEFAULT_PORT, DEFAULT_SCHEME_NAME);
+		this(hostname, DEFAULT_PORT);
 	}
 
 	public String getHostname() {
@@ -30,10 +27,6 @@ public class HostInfo implements Cloneable, Serializable {
 	public int getPort() {
 		return port;
 	}
-
-    public String getSchemeName() {
-        return schemeName;
-    }
 
 	@Override
     public boolean equals(final Object obj) {
