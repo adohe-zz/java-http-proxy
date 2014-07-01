@@ -1,5 +1,8 @@
 package com.westudio.java.socket.pool;
 
+import com.westudio.java.socket.pool.exceptions.SocketsException;
+import com.westudio.java.util.Factory;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -62,22 +65,28 @@ public class SocketConnection implements Closeable {
 	}
 
 	/**
-	 * use these settings by default //FIXME
+	 * use these settings by default
 	 *
 	 * @throws IOException
 	 */
-	public void connect() throws IOException {
+	public void connect() {
 		if (!isConnected()) {
-			socket = new Socket();
-			socket.setReuseAddress(true);
-			socket.setKeepAlive(true);
-			socket.setTcpNoDelay(true);
-			socket.setSoLinger(true, 0);
-			socket.connect(new InetSocketAddress(hostInfo.getHostname(),
-					hostInfo.getPort()), timeout);
-			socket.setSoTimeout(timeout);
-			outputStream = new SocketOutputStream(socket.getOutputStream());
-			inputStream = new SocketInputStream(socket.getInputStream());
+            try {
+                socket = Factory.getSocketFactory("https".equals(hostInfo.getSchema()) ? true : false).createSocket();
+
+                socket.setReuseAddress(true);
+                socket.setKeepAlive(true);
+                socket.setTcpNoDelay(true);
+                socket.setSoLinger(true, 0);
+
+                socket.connect(new InetSocketAddress(hostInfo.getHostname(),
+                        hostInfo.getPort()), timeout);
+                socket.setSoTimeout(timeout);
+                outputStream = new SocketOutputStream(socket.getOutputStream());
+                inputStream = new SocketInputStream(socket.getInputStream());
+            } catch (IOException e) {
+                throw new SocketsException(e);
+            }
 		}
 	}
 

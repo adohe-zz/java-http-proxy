@@ -34,7 +34,7 @@ public abstract class KeyedPool<K, T> {
 			} catch (Exception e) {/**/}
 		}
 		this.internalPool = new GenericKeyedObjectPool<K, T>(factory, config);
-		//FIXME a better way to initiate see Effective JAVA...？
+
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {
 				KeyedPool.this.destroy();
@@ -51,6 +51,14 @@ public abstract class KeyedPool<K, T> {
     }
 
 	public T getResource(String uri) {
+        try {
+            return internalPool.borrowObject(makeKey(uri));
+        } catch (Exception e) {
+            throw new SocketsException("could not get a resource from the pool.", e);
+        }
+    }
+
+    public T getResource(URI uri) {
         try {
             return internalPool.borrowObject(makeKey(uri));
         } catch (Exception e) {
