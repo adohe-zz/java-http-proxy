@@ -46,7 +46,7 @@ public abstract class KeyedPool<K, T> {
         try {
             return internalPool.borrowObject(key);
         } catch (Exception e) {
-            throw new SocketsException("could not get a resource from the pool.", e);
+            throw new SocketsException("Could not get a resource from the pool.", e);
         }
     }
 
@@ -54,7 +54,7 @@ public abstract class KeyedPool<K, T> {
         try {
             return internalPool.borrowObject(makeKey(uri));
         } catch (Exception e) {
-            throw new SocketsException("could not get a resource from the pool.", e);
+            throw new SocketsException("Could not get a resource from the pool.", e);
         }
     }
 
@@ -62,7 +62,7 @@ public abstract class KeyedPool<K, T> {
         try {
             return internalPool.borrowObject(makeKey(uri));
         } catch (Exception e) {
-            throw new SocketsException("could not get a resource from the pool.", e);
+            throw new SocketsException("Could not get a resource from the pool.", e);
         }
     }
 
@@ -70,9 +70,18 @@ public abstract class KeyedPool<K, T> {
 		if (resource == null) {
 			return;
 		}
+
 		K key = makeKey(resource);
 		internalPool.returnObject(key, resource);
 	}
+
+    public void returnBrokenResource(final T resource) {
+        try {
+            internalPool.invalidateObject(makeKey(resource), resource);
+        } catch (Exception e) {
+            throw new SocketsException(e);
+        }
+    }
 
 	public abstract K makeKey(T resource);
 

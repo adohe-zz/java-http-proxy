@@ -18,51 +18,73 @@ public class SocketConnection implements Closeable {
 	private SocketInputStream inputStream;
 	private int timeout = 15 * 1000;
 
-    public SocketConnection(Socket socket, final HostInfo hostInfo) {
+    private boolean broken = false;
+
+    public SocketConnection() {
+    }
+
+    public SocketConnection(final HostInfo hostInfo) {
         super();
-        if (socket == null) {
-            throw new IllegalArgumentException("socket must not be null");
-        }
         if (hostInfo == null) {
-            throw new IllegalArgumentException("hostinfo must not be null");
+            throw new IllegalArgumentException("HostInfo must not be null");
         }
 
-        this.socket = socket;
         this.hostInfo = hostInfo;
     }
 
-	public SocketConnection(Socket socket, final HostInfo hostInfo, final int timeout) {
-		this(socket, hostInfo);
+	public SocketConnection(final HostInfo hostInfo, final int timeout) {
+        this(hostInfo);
 		this.timeout = timeout;
 	}
 
-	public void adjustTimeout(final int timeout) throws IOException {
-		if (timeout < 1) {
-			setTimeoutInfinite();
-		} else {
-			if (!isConnected()) {
-				connect();
-			}
-			socket.setSoTimeout(timeout);
-		}
+	public void adjustTimeout(final int timeout) {
+        try {
+            if (timeout < 1) {
+                setTimeoutInfinite();
+            } else {
+                if (!isConnected()) {
+                    connect();
+                }
+
+                socket.setSoTimeout(timeout);
+            }
+        } catch (SocketException e) {
+            broken = true;
+            throw new SocketsException(e);
+        }
+    }
+
+	public void setTimeoutInfinite() {
+        try {
+            if (!isConnected()) {
+                connect();
+            }
+            socket.setKeepAlive(true);
+            socket.setSoTimeout(0);
+        } catch (SocketException e) {
+            broken = true;
+            throw new SocketsException(e);
+        }
 	}
 
-	public void setTimeoutInfinite() throws IOException {
-		if (!isConnected()) {
-			connect();
-		}
-		socket.setKeepAlive(true);
-		socket.setSoTimeout(0);
+	public void rollbackTimeout() {
+        try {
+            socket.setSoTimeout(timeout);
+            socket.setKeepAlive(false);
+        } catch (SocketException e) {
+            broken = true;
+            throw new SocketsException(e);
+        }
 	}
 
-	public void rollbackTimeout() throws SocketException {
-		socket.setSoTimeout(timeout);
-		socket.setKeepAlive(false);
-	}
-
-	protected void flush() throws IOException {
-		outputStream.flush();
-	}
+	protected void flush() {
+        try {
+            outputStream.flush();
+        } catch (IOException e) {
+            broken = true;
+            throw new SocketsException(e);
+        }
+    }
 
 	/**
 	 * use these settings by default
@@ -85,24 +107,30 @@ public class SocketConnection implements Closeable {
                 outputStream = new SocketOutputStream(socket.getOutputStream());
                 inputStream = new SocketInputStream(socket.getInputStream());
             } catch (IOException e) {
+                broken = true;
                 throw new SocketsException(e);
             }
 		}
 	}
 
 	@Override
-	public void close() throws IOException {
+	public void close() {
 		disconnect();
 	}
 
-	public void disconnect() throws IOException {
-		if (isConnected()) {
-			inputStream.close();
-			outputStream.close();
-			if (!socket.isClosed()) {
-				socket.close();
-			}
-		}
+	public void disconnect() {
+        if (isConnected()) {
+            try {
+                inputStream.close();
+                outputStream.close();
+                if (!socket.isClosed()) {
+                    socket.close();
+                }
+            } catch (IOException e) {
+                broken = true;
+                throw new SocketsException(e);
+            }
+        }
 	}
 
 	public boolean isConnected() {
@@ -111,22 +139,6 @@ public class SocketConnection implements Closeable {
 				&& !socket.isOutputShutdown();
 	}
 
-	// public SockConnection(final String host) {
-	// super();
-	// this.host = host;
-	// }
-	// public String getHost() {
-	// return host;
-	// }
-	// public void setHost(final String host) {
-	// this.host = host;
-	// }
-	// public int getPort() {
-	// return port;
-	// }
-	// public void setPort(final int port) {
-	// this.port = port;
-	// }
 	public HostInfo getHostInfo() {
 		return hostInfo;
 	}
@@ -142,6 +154,11 @@ public class SocketConnection implements Closeable {
 	public void setTimeout(final int timeout) {
 		this.timeout = timeout;
 	}
+
+    public boolean getBroken() {
+        return broken;
+    }
+
 	@Override
 	public String toString() {
 		if (this.socket != null) {
