@@ -6,9 +6,11 @@ import java.io.InputStream;
 
 //@ careless of ThreadSafe because a Socket must be held by no more than one SocketInputStream/SocketOutputStream at a time.
 public class SocketInputStream extends FilterInputStream {
+
 	private static final int defaultBufferSize = 8192;
 	protected byte buf[];
-	protected int count, limit;
+	protected int count;
+    protected int limit;
 
 	public SocketInputStream(InputStream in, int size) {
 		super(in);
@@ -85,6 +87,7 @@ public class SocketInputStream extends FilterInputStream {
 			if (limit == -1)
 				return -1;
 		}
+        // In case index out of bound
 		final int length = Math.min(limit - count, len);
 		System.arraycopy(buf, count, b, off, length);
 		count += length;

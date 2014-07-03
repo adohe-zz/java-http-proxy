@@ -9,7 +9,7 @@ public class SocketsFactory implements KeyedPooledObjectFactory<HostInfo, Socket
 	@Override
 	public PooledObject<SocketConnection> makeObject(HostInfo key)
 			throws Exception {
-		SocketConnection socketConnection = new SocketConnection(null, key);
+		SocketConnection socketConnection = new SocketConnection(key);
 		socketConnection.connect();
 		return new DefaultPooledObject<SocketConnection>(socketConnection);
 	}
@@ -24,7 +24,7 @@ public class SocketsFactory implements KeyedPooledObjectFactory<HostInfo, Socket
 	@Override
 	public boolean validateObject(HostInfo key, PooledObject<SocketConnection> p) {
 		SocketConnection sockConn = p.getObject();
-		return sockConn.isConnected();// FIXME not correct implementation!!!!!!
+		return sockConn.isConnected();
 	}
 
 	@Override
@@ -37,8 +37,6 @@ public class SocketsFactory implements KeyedPooledObjectFactory<HostInfo, Socket
 	@Override
 	public void passivateObject(HostInfo key, PooledObject<SocketConnection> p)
 			throws Exception {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

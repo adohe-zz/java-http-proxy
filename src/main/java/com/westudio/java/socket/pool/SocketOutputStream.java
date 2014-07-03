@@ -31,10 +31,11 @@ public class SocketOutputStream extends FilterOutputStream {
 	}
 
 	public void write(final byte b) throws IOException {
-		buf[count++] = b;
 		if (count == buf.length) {
 			flushBuffer();
 		}
+
+        buf[count++] = b;
 	}
 
 	public void write(final byte[] b) throws IOException {
@@ -55,6 +56,15 @@ public class SocketOutputStream extends FilterOutputStream {
 			count += len;
 		}
 	}
+
+    public void writeCrlf() throws IOException {
+        if (2 >= buf.length - count) {
+            flushBuffer();
+        }
+
+        buf[count++] = '\r';
+        buf[count++] = '\n';
+    }
 
 	public static boolean isSurrogate(final char ch) {
 		return ch >= Character.MIN_SURROGATE && ch <= Character.MAX_SURROGATE;
