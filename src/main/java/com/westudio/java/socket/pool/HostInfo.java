@@ -34,7 +34,12 @@ public class HostInfo implements Cloneable, Serializable {
         return schema;
     }
 
-	@Override
+    @Override
+    public int hashCode() {
+        return this.hostname.toUpperCase().hashCode() + this.port;
+    }
+
+    @Override
     public boolean equals(final Object obj) {
 
         if (this == obj)
