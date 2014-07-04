@@ -11,7 +11,7 @@ import java.net.URI;
 /**
  * An adaptor of GenericKeyedObjectPool
  */
-public abstract class KeyedPool<K, T> {
+public abstract class KeyedPool<K, T> implements AutoCloseable {
 
 	protected GenericKeyedObjectPool<K, T> internalPool;
 
@@ -34,12 +34,6 @@ public abstract class KeyedPool<K, T> {
 			} catch (Exception e) {/**/}
 		}
 		this.internalPool = new GenericKeyedObjectPool<K, T>(factory, config);
-
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			public void run() {
-				KeyedPool.this.destroy();
-			}
-		});
 	}
 
 	public T getResource(K key) {
@@ -89,9 +83,10 @@ public abstract class KeyedPool<K, T> {
 
     public abstract K makeKey(URI uri);
 
-	public void destroy() {
-		closeInternalPool();
-	}
+    @Override
+    public void close() throws Exception {
+        closeInternalPool();
+    }
 
 	protected void closeInternalPool() {
 		try {
