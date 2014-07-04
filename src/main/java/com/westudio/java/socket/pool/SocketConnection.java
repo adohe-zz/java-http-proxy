@@ -5,6 +5,8 @@ import com.westudio.java.util.Factory;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
@@ -14,8 +16,8 @@ public class SocketConnection implements Closeable {
 
 	private HostInfo hostInfo;
 	private Socket socket;
-	private SocketOutputStream outputStream;
-	private SocketInputStream inputStream;
+	private OutputStream outputStream;
+	private InputStream inputStream;
 	private int timeout = 15 * 1000;
 
     private boolean broken = false;
@@ -104,8 +106,8 @@ public class SocketConnection implements Closeable {
                 socket.connect(new InetSocketAddress(hostInfo.getHostname(),
                         hostInfo.getPort()), timeout);
                 socket.setSoTimeout(timeout);
-                outputStream = new SocketOutputStream(socket.getOutputStream());
-                inputStream = new SocketInputStream(socket.getInputStream());
+                outputStream = socket.getOutputStream();
+                inputStream = socket.getInputStream();
             } catch (IOException e) {
                 broken = true;
                 throw new SocketsException(e);

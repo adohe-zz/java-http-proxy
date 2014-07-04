@@ -101,7 +101,6 @@ public class RequestHandler implements HttpHandler {
         try {
             socketConnection = socketPool.getResource(new HostInfo(host, schema, port));
             // Add request header
-            //TODO:UPDATE THIS
             BufferedOutputStream outputStream = new BufferedOutputStream(socketConnection.getSocket().getOutputStream());
             write(outputStream, method);
             outputStream.write(' ');
@@ -179,7 +178,6 @@ public class RequestHandler implements HttpHandler {
 
             // Generate response headers
             Headers headers = httpExchange.getResponseHeaders();
-            //TODO:UPDATE THIS
             InputStream is = socketConnection.getSocket().getInputStream();
             StringBuilder sb = new StringBuilder();
             int status = 0;

@@ -31,7 +31,7 @@ public class SocketsFactory implements KeyedPooledObjectFactory<HostInfo, Socket
 	public void activateObject(HostInfo key, PooledObject<SocketConnection> p)
 			throws Exception {
 		SocketConnection sockConn = p.getObject();
-		sockConn.connect();// FIXME not correct implementation!!!!!!
+		sockConn.connect();
 	}
 
 	@Override
