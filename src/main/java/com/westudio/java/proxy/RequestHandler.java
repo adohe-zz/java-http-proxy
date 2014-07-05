@@ -49,9 +49,9 @@ public class RequestHandler implements HttpHandler {
         ops.write(str.getBytes(StandardCharsets.ISO_8859_1));
     }
 
-    private static void writeln(OutputStream ops) throws IOException {
-        ops.write('\r');
-        ops.write('\n');
+    private static void writeCrlf(OutputStream os) throws IOException {
+        os.write('\r');
+        os.write('\n');
     }
 
     private static void writeHeader(OutputStream ops, String key, String value) throws IOException {
@@ -59,7 +59,7 @@ public class RequestHandler implements HttpHandler {
         ops.write(':');
         ops.write(' ');
         write(ops, value);
-        writeln(ops);
+        writeCrlf(ops);
     }
 
     private static void copyResponse(InputStream is, OutputStream os, byte[] buffer, int length) throws IOException {
@@ -106,7 +106,7 @@ public class RequestHandler implements HttpHandler {
             outputStream.write(' ');
             write(outputStream, path);
             write(outputStream, " HTTP/1.1");
-            writeln(outputStream);
+            writeCrlf(outputStream);
 
             boolean withHost = false;
             int contentLength = -1;
@@ -145,14 +145,14 @@ public class RequestHandler implements HttpHandler {
 
             if (contentLength > 0) {
                 writeHeader(outputStream, "Content-Length", "" + contentLength);
-                writeln(outputStream);
+                writeCrlf(outputStream);
                 // Simply pipe the input stream to the output stream
                 Streams.pipe(httpExchange.getRequestBody(), outputStream);
             } else if (contentLength == 0) {
                 writeHeader(outputStream, "Content-Length", "0");
-                writeln(outputStream);
+                writeCrlf(outputStream);
             } else if ("GET".equals(method) || "HEAD".equals(method)) {
-                writeln(outputStream);
+                writeCrlf(outputStream);
             } else {
                 // Handle chunked transfer encoding
                 writeHeader(outputStream, "Transfer-Encoding", "chunked");
@@ -171,8 +171,8 @@ public class RequestHandler implements HttpHandler {
                 }
                 // Add the last block chunk of size 0
                 outputStream.write('0');
-                writeln(outputStream);
-                writeln(outputStream);
+                writeCrlf(outputStream);
+                writeCrlf(outputStream);
             }
             outputStream.flush();
 
@@ -241,7 +241,7 @@ public class RequestHandler implements HttpHandler {
             // Handle response body
             if (contentLength == 0 && method == "HEAD") {
                 httpExchange.sendResponseHeaders(status, -1);
-                //TODO:RETURN THE SOCKET RESOURCE TO THE POOL
+                socketPool.returnResource(socketConnection);
                 return;
             }
 
@@ -276,14 +276,15 @@ public class RequestHandler implements HttpHandler {
                 } else {
                     b = HEX_DIGITS.indexOf(Character.toUpperCase(b));
                     if (b >= 0) {
-                        chunkSize = chunkSize * 16 + b; //FIXME:CORRECT?
+                        chunkSize = chunkSize * 16 + b;
                     }
                 }
             }
         } catch (IOException e) {
-            //TODO:HANDLE EXCEPTION
+            if (socketConnection != null) {
+                socketConnection.close();
+            }
         } finally {
-            //FIXME
             if (socketPool != null) {
                 socketPool.returnResource(socketConnection);
             }
