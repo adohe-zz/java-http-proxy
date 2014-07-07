@@ -121,6 +121,7 @@ public class RequestHandler implements HttpHandler {
                     withHost = true;
                 }
 
+                // Skip Header will not write into the output stream
                 if (SKIP_HEADERS.contains(key.toUpperCase())) {
                     if (key.equalsIgnoreCase("Content-Length")) {
                         List<String> value = entry.getValue();
