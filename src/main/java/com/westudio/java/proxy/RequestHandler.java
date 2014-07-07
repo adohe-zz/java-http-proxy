@@ -38,9 +38,11 @@ public class RequestHandler implements HttpHandler {
             "X-PKCS7-CERTIFICATES-BASE64",
             "DNT"
     ));
+
     private static final int RECV_MAX_CHUNK_SIZE = 4095;
     private static final int RESP_MAX_SIZE = 65536;
     private static final String HEX_DIGITS = "0123456789ABCDEF";
+    private static final String HTTP_PROTOCOL_VERSION = "HTTP/1.1";
 
     public RequestHandler() {
     }
@@ -100,12 +102,14 @@ public class RequestHandler implements HttpHandler {
         SocketConnection socketConnection = null;
         try {
             socketConnection = socketPool.getResource(new HostInfo(host, schema, port));
-            // Add request header
             BufferedOutputStream outputStream = new BufferedOutputStream(socketConnection.getSocket().getOutputStream());
+
+            // Request header write
             write(outputStream, method);
             outputStream.write(' ');
             write(outputStream, path);
-            write(outputStream, " HTTP/1.1");
+            outputStream.write(' ');
+            write(outputStream, HTTP_PROTOCOL_VERSION);
             writeCrlf(outputStream);
 
             boolean withHost = false;
