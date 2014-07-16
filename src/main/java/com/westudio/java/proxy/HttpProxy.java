@@ -1,6 +1,7 @@
 package com.westudio.java.proxy;
 
 import com.sun.net.httpserver.HttpServer;
+import com.westudio.java.util.Conf;
 import com.westudio.java.util.Numbers;
 
 import java.io.IOException;
@@ -15,6 +16,10 @@ public class HttpProxy {
     private static final int DEFAULT_BACKLOG = 50;
 
     public static void main(String[] args) {
+
+        if (Conf.handleShutdown(HttpProxy.class, args, running)) {
+            return;
+        }
 
         int port = 0;
         String host = "127.0.0.1";
