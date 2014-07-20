@@ -53,6 +53,7 @@ public class HostInfo implements Cloneable, Serializable {
             return false;
         }
     }
+
 	@Override
     public String toString() {
 		StringBuilder sb = new StringBuilder();
