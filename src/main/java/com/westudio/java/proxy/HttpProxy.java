@@ -22,7 +22,7 @@ public class HttpProxy {
         }
 
         int port = 0;
-        String host = "127.0.0.1";
+        String host = "0.0.0.0";
 
         if (args != null && args.length >= 1) {
             if (args.length  == 1) {
@@ -35,6 +35,8 @@ public class HttpProxy {
 
         try {
             HttpServer httpServer = HttpServer.create(new InetSocketAddress(host, port), DEFAULT_BACKLOG);
+            // or create like this
+            //HttpServer httpServer = HttpServer.create(new InetSocketAddress(port), DEFAULT_BACKLOG);
             RequestHandler handler = new RequestHandler();
             httpServer.createContext("/", handler);
             httpServer.start();
