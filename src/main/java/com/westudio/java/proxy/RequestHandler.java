@@ -244,7 +244,7 @@ public class RequestHandler implements HttpHandler {
             }
 
             // Handle response body
-            if (contentLength == 0 && method == "HEAD") {
+            if (contentLength == 0 && "HEAD".equals(method)) {
                 httpExchange.sendResponseHeaders(status, -1);
                 socketPool.returnResource(socketConnection);
                 return;
